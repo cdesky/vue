@@ -66,7 +66,7 @@
                   <li v-for='item in productList'>
                     <div class="cart-tab-1">
                       <div class="cart-item-check">
-                        <a href="javascript:void 0" class="item-check-btn">
+                        <a href="javascript:void 0" class="item-check-btn" :class="{'check':item.checked}" @click='select(item)'>
                           <svg class="icon icon-ok"><use xlink:href="#icon-ok"></use></svg>
                         </a>
                       </div>
@@ -84,22 +84,22 @@
                       </div>
                     </div>
                     <div class="cart-tab-2">
-                      <div class="item-price">{{item.price}}</div>
+                      <div class="item-price">{{item.price | formaterMoney}}</div>
                     </div>
                     <div class="cart-tab-3">
                       <div class="item-quantity">
                         <div class="select-self select-self-open">
                           <div class="quantity">
-                            <a href="javascript:void 0"></a>
+                            <a href="javascript:void 0" v-on:click="addCount(item,-1)">-</a>
                             <input type="text"  disabled v-bind:value='item.count'>
-                            <a href="javascript:void 0"></a>
+                            <a href="javascript:void 0" @click="addCount(item,1)">+</a>
                           </div>
                         </div>
                         <div class="item-stock">有货</div>
                       </div>
                     </div>
                     <div class="cart-tab-4">
-                      <div class="item-price-total" v-html="item.count*item.price"></div>
+                      <div class="item-price-total" >{{item.count*item.price | money('美元')}}</div>
                     </div>
                     <div class="cart-tab-5">
                       <div class="cart-item-operation">
@@ -118,21 +118,21 @@
               <div class="cart-foot-l">
                 <div class="item-all-check">
                   <a href="javascript:void 0">
-                    <span class="item-check-btn" >
+                    <span class="item-check-btn" :class="{'check':checkAllFlag}" @click='checkAll(true)'>
                       <svg class="icon icon-ok"><use xlink:href="#icon-ok"></use></svg>
                     </span>
-                    <span>全选</span>
+                    <span @click='checkAll(true)'>全选</span>
                   </a>
                 </div>
-                <div class="item-all-del">
-                  <a href="javascript:void 0" class="item-del-btn">
-                    <span>取消全选</span>
+                <div class="item-all-del" >
+                  <a href="javascript:void 0" class="item-del-btn"  @click='checkAll(false)'>
+                    <span>取消</span>
                   </a>
                 </div>
               </div>
-              <div class="cart-foot-r">
+              <div class="cart-foot-r" >
                 <div class="item-total">
-                  Item total: <span class="total-price">{{total}}</span>
+                  Item total: <span class="total-price"></span>
                 </div>
                 <div class="next-btn-wrap">
                   <a href="javascrit:;" class="btn btn--red" style="width: 200px">结账</a>

@@ -645,7 +645,7 @@
 
 /** cart **/
 .cart {
-  padding: 69px 0 54px 0; }
+  padding: 20px 0 54px 0; }
 
 .cart-foot-wrap {
   height: 54px;
@@ -657,9 +657,10 @@
     padding: 0 22px; }
   .cart-foot-wrap .item-all-check {
     float: left;
-    color: #EE7A23; }
+    color: #EE7A23; 
+    margin-right:8px;}
     .cart-foot-wrap .item-all-check .item-check-btn {
-      margin-right: 18px; }
+      margin-right: 2px; }
     .cart-foot-wrap .item-all-check span {
       vertical-align: middle; }
   .cart-foot-wrap .item-all-del {
