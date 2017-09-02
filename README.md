@@ -1,2 +1,2 @@
 # vue
-vue 购物栏
+这是第一个vue demo
