@@ -1,2 +1,2 @@
 # vue
-这是第一个vue demo
+vue写的购物栏结帐
