@@ -84,7 +84,7 @@
                       </div>
                     </div>
                     <div class="cart-tab-2">
-                      <div class="item-price">{{item.price | formaterMoney}}</div>
+                      <div class="item-price">{{item.price | money('美元')}}</div>
                     </div>
                     <div class="cart-tab-3">
                       <div class="item-quantity">
@@ -103,7 +103,7 @@
                     </div>
                     <div class="cart-tab-5">
                       <div class="cart-item-operation">
-                        <a href="javascript:void 0" class="item-edit-btn">
+                        <a href="javascript:void 0" class="item-edit-btn" @click="vModal=true">
                           <svg class="icon icon-del"><use xlink:href="#icon-del" ></use></svg>
                         </a>
                       </div>
@@ -132,7 +132,7 @@
               </div>
               <div class="cart-foot-r" >
                 <div class="item-total">
-                  Item total: <span class="total-price"></span>
+                  Item total: <span class="total-price">{{totalMoney | money('美元')}}</span>
                 </div>
                 <div class="next-btn-wrap">
                   <a href="javascrit:;" class="btn btn--red" style="width: 200px">结账</a>
@@ -142,10 +142,10 @@
           </div>
         </div>
 
-        <div class="md-modal modal-msg md-modal-transition" id="showModal">
+        <div class="md-modal modal-msg md-modal-transition " v-bind:class="{'md-show':vModal}"  id="showModal">
           <div class="md-modal-inner">
             <div class="md-top">
-              <button class="md-close">关闭</button>
+              <button class="md-close" @click="vModal=false">关闭</button>
             </div>
             <div class="md-content">
               <div class="confirm-tips">
@@ -153,14 +153,15 @@
               </div>
               <div class="btn-wrap col-2">
                 <button class="btn btn--m" id="btnModalConfirm">Yes</button>
-                <button class="btn btn--m btn--red" id="btnModalCancel">No</button>
+                <button class="btn btn--m btn--red" id="btnModalCancel" @click="vModal=false">No</button>
               </div>
             </div>
-          </div>
+          </div>          
         </div>
-      </div>
+        <div  v-bind:class="{'md-overlay':vModal}"></div>
+      </div>      
     </div>
-
+	
     <script src="js/lib/vue.min.js"></script>
     <script src="js/lib/vue-resource.js"></script>
     <script src="js/cart.js"></script>
