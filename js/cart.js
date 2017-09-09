@@ -4,7 +4,8 @@ new Vue({
    totalMoney:0,
    productList:[],
    checkAllFlag:false,
-   vModal:false
+   vModal:false,
+   delPro:[]
   },
   //局部过滤器  只对应当前的 
 //filters: {
@@ -65,6 +66,17 @@ new Vue({
       		if(val.checked)
       		_this.totalMoney+=val.count*val.price
       	})
+      },
+      //标记某个要删除的商品
+      delProduct:function(item){
+      	this.vModal=true;
+      	this.delPro=item 
+      },
+      //确定删除商品
+      delSure:function(){
+      	var index=this.productList.indexOf(this.delPro)
+      	this.productList.splice(index,1)
+      	this.vModal=false
       }
 
     }
