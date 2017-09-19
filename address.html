@@ -63,7 +63,7 @@
           <div class="addr-list-wrap">
             <div class="addr-list">
               <ul>
-                <li v-for="(item, index) in filterAddress" v-bind:class="{'check': index == currentIndex}" @click="currentIndex=index">
+                <li v-for="(item, index) in filteraddressList" v-bind:class="{'check':index==curIndex}" @click="curIndex=index">
                   <dl>
                     <dt>{{item.userName}}</dt>
                     <dd class="address">{{item.streetName}}</dd>
@@ -80,9 +80,9 @@
                     </a>
                   </div>
                   <div class="addr-opration addr-set-default" v-if="!item.isDefault">
-                    <a href="javascript:;" class="addr-set-default-btn" @click="setDefault(item.addressId)"><i>设为默认</i></a>
+                    <a href="javascript:;" class="addr-set-default-btn" @click="setDef(item.addressId)"><i>设为默认</i></a>
                   </div>
-                  <div class="addr-opration addr-default" v-if="item.isDefault">默认地址</div>
+                  <div class="addr-opration addr-default" v-if='item.isDefault'>默认地址</div>
                 </li>
 
                 <li class="addr-new">
@@ -96,8 +96,8 @@
               </ul>
             </div>
 
-            <div class="shipping-addr-more">
-              <a class="addr-more-btn up-down-btn" href="javascript:" @click="loadMore">
+            <div class="shipping-addr-more" @click="limit=addressList.length">
+              <a class="addr-more-btn up-down-btn" href="javascript:" >
                 more
                 <i class="i-up-down">
                   <i class="i-up-down-l"></i>
@@ -114,11 +114,11 @@
           <div class="shipping-method-wrap">
             <div class="shipping-method">
               <ul>
-                <li v-bind:class="{'check': shippingMethod == 1}" @click="shippingMethod = 1">
+                <li >
                   <div class="name">标准配送</div>
                   <div class="price">Free</div>
                 </li>
-                <li v-bind:class="{'check': shippingMethod == 2}" @click="shippingMethod = 2">
+                <li >
                   <div class="name">高级配送</div>
                   <div class="price">180</div>
                 </li>
